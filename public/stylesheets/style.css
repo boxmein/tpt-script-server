@@ -1,8 +1,38 @@
 body {
-  padding: 50px;
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  padding-bottom: 20px;
+  background-color: #FFF;
 }
 
-a {
-  color: #00B7FF;
+@media (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+  .collapse {
+    display: block;
+  }
+}
+
+#about {
+  padding-top: 50px;
+  background-color: #EDEDED;
+}
+
+.section {
+  padding-bottom: 30px;
+  border-bottom: 1px solid  #DDD;
+}
+
+.section .arrow-bottom {
+  background-image: url('/images/arrowdown.png');
+  width: 41px;
+  height: 41px;
+  position: relative;
+  margin: 0 auto;
+  top: 71px;
+}
+
+h5 {
+  font-size: 1em;
+  font-weight: bold;
+  
 }
