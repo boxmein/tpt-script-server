@@ -2,6 +2,28 @@ doctype 5
 html
   head
     title= title
+    link(rel='stylesheet', href='/stylesheets/bootstrap.min.css', media='screen')
     link(rel='stylesheet', href='/stylesheets/style.css')
-  body
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+  body(data-spy='scroll', data-target='#spyable')
+    .navbar.navbar-inverse.navbar-fixed-top
+      .container
+        .navbar-header
+          button.navbar-toggle(data-toggle='collapse', data-target='.navbar-collapse', type='button')
+            span.icon-bar
+            span.icon-bar
+            span.icon-bar
+          a.navbar-brand(href='/') TPT Script Server
+        .collapse.navbar-collapse
+          ul.nav.navbar-nav#spyable
+            each link in links 
+              if links.active == link.href
+                li.active: a(href='#{link.href}') #{link.title}
+              else 
+                li: a(href='#{link.href}') #{link.title}
+    br
+    
     block content
+
+    script(src='/javascripts/jquery-2.0.3.min.js')
+    script(src='/javascripts/bootstrap.min.js')
