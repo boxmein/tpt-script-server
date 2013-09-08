@@ -1,5 +1,37 @@
 extends layout
 
 block content
-  h1= title
-  p Welcome to #{title}
+  .section#about
+    .container
+      h1= title
+      p This site provides a simple way to host The Powder Toy Lua scripts for use inside other saves uploaded into the save server. It's meant to be used in conjunction with <a href="http://tpt.io/:14596">cracker64's mod manager</a> which requests data and scripts from here. It provides a strictly moderated script host, a request / listing database and metadata. Right now, uploading scripts here means being boxmein. 
+    .arrow-bottom
+
+  .section#usage
+    .container
+      h2 Usage
+      p Here's a listing of what this site does, how to use saves that use it, and how to make use of it yourself.
+
+      h3 The site
+      p You have quite many different URLs that can be requested to provide different kinds of data: 
+
+      dl.dl-horizontal
+        dt /view/:script
+        dd A styled and highlighted 'front page' for the given script. You can link to these. Useful for just casual browsing.
+
+        dt /raw/:script
+        dd A raw and text-only Lua representation of the script content with the metadata (name, description, author, time posted, where used?) as comments in the file start. This may change. 
+
+        dt /meta/:script
+        dd Fetch only the metadata for the given script.
+
+        dt /list/
+        dd Get listings of all the scripts that are hosted here, also fancy and styled. Find new scripts to use here, as well as short overviews of what it does and other metadata.
+
+        dt /list/raw
+        dd Get a raw list of all the scripts that are hosted here for processing. The formatting is minimal and lacks metadata.
+
+      h3 Use dependent saves
+      p .......
+
+      h3 Create a dependent save
