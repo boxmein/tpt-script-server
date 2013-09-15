@@ -1,0 +1,10 @@
+extends layout
+
+block content
+  .section
+    .container.row
+      each item in scripts
+        a.col-md-4.col-xs-4(href='/view/#{item.scriptID}')
+          h4 #{item.title}
+            i.text-muted #{item.author}
+          p: em=item.description
