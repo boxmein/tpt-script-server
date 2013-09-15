@@ -1,6 +1,7 @@
 body {
   padding-bottom: 20px;
   background-color: #FFF;
+  padding-top: 50px;
 }
 
 @media (min-width: 768px) {
@@ -17,6 +18,9 @@ body {
   background-color: #EDEDED;
 }
 
+#about .arrow-bottom {
+  background-image: url('/images/arrowdown-grey.png');
+}
 .section {
   padding-bottom: 30px;
   border-bottom: 1px solid  #DDD;
@@ -25,10 +29,10 @@ body {
 .section .arrow-bottom {
   background-image: url('/images/arrowdown.png');
   width: 41px;
-  height: 41px;
+  height: 21px;
   position: relative;
   margin: 0 auto;
-  top: 71px;
+  top: 51px;
 }
 
 h5 {
