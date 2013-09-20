@@ -29,11 +29,11 @@ block content
         dd Example: <a href="/view/0">/view/0</a>
 
         dt /raw/:script
-        dd A raw and text-only Lua representation of the script content with the metadata (name, description, author, time posted, where used?) as comments in the file start. This may change. 
+        dd A raw version of the script code. Perfect for automation.
         dd Example: <a href="/raw/0">/raw/0</a>
 
         dt /meta/:script
-        dd Fetch only the metadata for the given script.
+        dd Fetch only the metadata in JSON for the given script.
         dd Example: <a href="/meta/0">/meta/0</a>
 
         dt /list/
@@ -41,8 +41,9 @@ block content
         dd: a(href='/list') /list
 
         dt /list/raw
-        dd Get a raw list of all the scripts that are hosted here for processing. The formatting is minimal and lacks metadata.
-
+        dd Get a raw list of all the scripts that are hosted here for processing. The formatting is minimal. Metadata is in JSON form.
+        dd: a(href='/list/raw') /list/raw
+        
       h3 Use dependent saves
       p dude idk ask cracker64 or something
 
