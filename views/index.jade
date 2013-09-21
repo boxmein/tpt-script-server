@@ -43,6 +43,18 @@ block content
         dt /list/raw
         dd Get a raw list of all the scripts that are hosted here for processing. The formatting is minimal. Metadata is in JSON form.
         dd: a(href='/list/raw') /list/raw
+
+        dt /assocs/:id
+        dd You can fetch associations created by /manage/ here. The result will be in JSON, with the given saveid being the "saveid" key and the accessed association IDs are in the array accessible by "assocs". 
+        dd: a(href='/assocs/0') /assocs/0
+
+        hr
+
+        dt /login/ 
+        dd TPTAPI-based login system! The pages below will need you to be logged in.
+
+        dt /manage/ 
+        dd You can manage save-&gt;scripts associations here. Given a save ID, you can attach scripts to it via IDs.
         
       h3 Use dependent saves
       p dude idk ask cracker64 or something
