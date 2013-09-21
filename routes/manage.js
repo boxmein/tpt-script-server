@@ -15,6 +15,7 @@ exports.manage = function(req, res) {
       return res.status(500).send('nedb internal error');
     }
     console.log('Found assocs: ' + docs);
+    links.active = '/manage';
     res.render('manage_render', {title: 'Association Manager | TPT Script Server', links: links, assocs: docs});
   });
 };
