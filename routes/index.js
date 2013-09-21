@@ -1,14 +1,8 @@
 var db = require('nedb'), 
     fs = require('fs'),
+    G = require('./globals.js'),
     scripts = new db({filename: 'databases/scripts.nedb', autoload: true}),
-    links = [
-  {'href': '/', 'title': 'Home'},
-  {'href': '#about', 'title': 'About'},
-  {'href': '#usage', 'title': 'Usage'},
-  {'href': '#scripts', 'title': 'Scripts'},
-  {'href': 'https://github.com/boxmein/tpt-script-server', 'title': 'On GitHub'}
-];
-
+    links = G.links;
 
 /*
   Dummy function that cleans up a script ID
@@ -41,6 +35,7 @@ exports.index = function(req, res){
      - query resulted in empty array
 */
 exports.view = function (req, res) {
+  links.active = '/list';
   var scriptID = req.params.scriptID; 
   scriptID = sanitizeID(scriptID);
   scripts.find({scriptID: scriptID}, function (err, docs) {
@@ -153,6 +148,7 @@ exports.rawlist = function (req, res) {
 
 */
 exports.list = function (req, res) {
+  links.active = '/list';
   scripts.find({}, function (err, docs) {
     if (err) return res.send('ERR: ' + err); 
     res.render('list', {scripts: docs, links: links, title: "TPT Script Server"});
