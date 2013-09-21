@@ -37,7 +37,7 @@ exports.login = function (req, res) {
   // req.query.token_id is some token id passed by tptapi
   var magicpath = '/API_main.php?session_create&private_key=' + G.TPTAPI_PRIVATE_KEY + 
                                       '&session_id=' + req.query.token_id + 
-                                      '&ip=' + req.connection.remoteAddress;
+                                      '&ip=' + req.ips;
                                       //'&ip=176.46.16.185'
   console.log(magicpath);
   var shakeit = http.request({
