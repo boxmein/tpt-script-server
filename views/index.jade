@@ -45,7 +45,7 @@ block content
         dd: a(href='/list/raw') /list/raw
 
         dt /assocs/:id
-        dd You can fetch associations created by /manage/ here. The result will be in JSON, with the given saveid being the "saveid" key and the accessed association IDs are in the array accessible by "assocs". 
+        dd You can fetch associations created by /manage/ here. The result will be a space-separated list of script IDs.
         dd: a(href='/assocs/0') /assocs/0
 
         hr
@@ -75,6 +75,5 @@ block content
         li It must not be malicious in intent. That means no powder.pref-stealers, no analytics scripts, no scripts that download other scripts, no scripts that intend to disable or crash the process/computer of the client. The scripts will be first confirmed by a passing moderator. 
 
         li It must not be a 'tpt.el'-element, it must use the proper <a href="http://boxmein.x10.mx/tptelements/lua/lua-reference.html#elements">elements API</a> and not modify other elements substantially. Small modifications are fine though, like making acid not flammable.
-    .arrow-bottom
 
   
