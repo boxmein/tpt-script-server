@@ -47,7 +47,7 @@ app.post('/manage/rm/post', manage.post_rmassoc); // Remove assoc
 app.get('/assocs/:id', manage.get_assocdata); // Get assoc element
 
 app.get('/login', tptapi.login); // Manage tptapi login
-
+app.get('/logout', tptapi.logout); // Manage logouts
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
