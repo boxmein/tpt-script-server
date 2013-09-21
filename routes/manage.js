@@ -1,5 +1,5 @@
 var db = require('nedb'), 
-    fs = require('fs'),
+    http = require('http'),
     G = require('./globals.js'),
     assocs = new db({filename: 'databases/assocs.nedb', autoload: true}),
     links = G.links;
@@ -62,16 +62,40 @@ exports.post_addassoc = function (req, res) {
   if (isNaN(saveid))
     return res.status(400).send('Save ID was non-integer: ' + req.body.saveid);
 
-  // TODO check if user's own save
+  // check if user's own save
+  if(http.request({
+    host: 'powdertoy.co.uk',
+    port: 80,
+    method: 'GET',
+    path: '/Browse/View.json?ID='+saveid
+  }, function(resp) {
+    var data;
+    resp.on('data', function(chunk) {data += chunk; });
+    resp.on('end', function() {
+      try {
+        data = JSON.parse(data);
+      }
+      catch (err) {
+        res.status(500).send('TPT data was not valid JSON');
+        return true;
+      }
+      if (data.Username != req.session.user) {
+        res.status(401).send('Can\'t associate to someone else\'s save!');
+        return true;
+      }
+    });
+
+  })) return;
+
 
   // Check for duplicates
-  assocs.find({saveid: req.body.saveid}, function (err, docs) {
+  if(assocs.find({saveid: req.body.saveid}, function (err, docs) {
     if (err)
-      return res.status(500).send('Error checking for duplicates');
+      return res.status(500).send('Error checking for duplicates'), true;
 
     if (docs.length && docs.length > 0) 
-      return res.status(400).send('Is a duplicate! Not adding.');
-  })
+      return res.status(400).send('Is a duplicate! Not adding.'), true;
+  })) return;
 
   // Add an entry
   assocs.insert({
@@ -81,7 +105,6 @@ exports.post_addassoc = function (req, res) {
   }, function(err, docs) {
     if (err) 
       return res.status(500).send('Database error: ' + err);
-    console.log('Successfully added ' + JSON.stringify(docs));
     res.set('Content-Type', 'application/json');
     res.send(JSON.stringify(docs));
   });
@@ -121,8 +144,7 @@ exports.get_assocdata = function (req, res) {
     if (!docs.length || docs.length == 0) 
       res.status(500).send('Didn\'t find a darn thing.');
 
-    console.log('Sending assoc data: ' + JSON.stringify(docs[0]));
-    res.set('Content-Type', 'application/json');
-    res.send(JSON.stringify(docs[0]));
+    res.set('Content-Type', 'text/plain');
+    res.send(docs[0].scripts.join(' '));
   });
 };
