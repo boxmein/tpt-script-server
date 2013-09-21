@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  .section
+    .container
+      //- these will be toggled by the javascript
+      #error.alert.alert-danger.hidden
+      #success.alert.alert-success.hidden
+
+      h1 Associations
+      h3 Your associations: 
+      table.table.table-striped.table-hover#listofassocs
+        thead
+          tr
+            th: b Save ID
+            th: b Scripts associated
+            th(style='text-align: right'): b Perma-delete&trade;
+        tbody 
+          //- generate listings for every association item
+          each item in assocs
+            tr 
+              td.saveid: a(href='ptsave:#{item.saveid}')=item.saveid
+              td.scripts=item.scripts.join(', ')
+              td: button.close &times;
+
+      //- add one here. lots of bootstrap magic inbound.
+      h3 Add Associations
+      form.form-horizontal#addassoc
+
+        .form-group
+          label(for='saveid').control-label.col-md-2.col-lg-2 Save ID: 
+          .col-md-10.col-lg-10
+            input(type='text', name='saveid', placeholder='111111')#saveid.form-control
+
+        .form-group
+          label(for='scripts').control-label.col-md-2.col-lg-2 Scripts:
+          .col-md-10.col-lg-10
+            input(type='text', name='scripts', placeholder='0, 1, 2, 3, 4, 5')#scripts.form-control
+
+        .form-group
+          .col-md-2.col-lg-2
+          .col-md-10.col-lg-10
+            button.btn.btn-primary#submit Add
+block js
+  script(src='/javascripts/manage-utils.js')
