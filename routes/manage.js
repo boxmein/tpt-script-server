@@ -64,7 +64,7 @@ exports.post_addassoc = function (req, res) {
     return res.status(400).send('Save ID was non-integer: ' + req.body.saveid);
 
   // check if user's own save
-  if(http.request({
+  var req = http.request({
     host: 'powdertoy.co.uk',
     port: 80,
     method: 'GET',
@@ -78,16 +78,15 @@ exports.post_addassoc = function (req, res) {
       }
       catch (err) {
         res.status(500).send('TPT data was not valid JSON');
-        return true;
       }
       if (data.Username != req.session.user) {
         res.status(401).send('Can\'t associate to someone else\'s save!');
-        return true;
       }
     });
 
-  })) return;
-
+  });
+  req.on('error', function(err) {console.log(err.stack);});
+  req.end();
 
   // Check for duplicates
   if(assocs.find({saveid: req.body.saveid}, function (err, docs) {
