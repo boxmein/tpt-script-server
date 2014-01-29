@@ -6,12 +6,9 @@ block content
       h1= title
       p.
         This site provides a simple way to host The Powder Toy Lua scripts for 
-        use inside other saves uploaded into the save server. It's meant to be 
-        used in conjunction with <a href="http://tpt.io/:14596">cracker64's 
-        mod manager</a> which requests data and scripts from here. It provides 
-        a strictly moderated script host, a request / listing database and 
-        metadata. Right now, uploading scripts here means being boxmein. 
-        Get a script up here by poking him. 
+        use inside other saves uploaded into the save server. You might need to 
+        figure out someone to write a Lua backside for it to have TPT-integrated 
+        functionality.
         
     .arrow-bottom
 
@@ -56,24 +53,19 @@ block content
         dt /manage/ 
         dd You can manage save-&gt;scripts associations here. Given a save ID, you can attach scripts to it via IDs.
         
-      h3 Use dependent saves
-      p dude idk ask cracker64 or something
-
+      h3 Using dependent saves
+      p I have no clue. Have someone write a Lua script to fetch your required script files and automate the process for you.
+      p Saving alternate data in TPT saves (even as particles) is something shunned by TPT admins and developers, thus dependencies have to be saved server-side.
+      
       h3 Create a dependent save
-      p idk how dude
+      p As far as I'm concerned, you can add an association in <a href="/manage/">/manage/</a> and a script by pinging me.
     .arrow-bottom
 
   .section#scripts
     .container
       h2 Scripts we serve
-      p A script listing is provided in <a href="/list">/list</a> for scripts that already are on this site. All of the scripts are clean, safe to use&trade; and totally compatible with other scripts. Or at least they should be. 
+      p A script listing is provided in <a href="/list">/list</a>. I'm not yet guaranteeing anything.
 
       h2 Contribute?
-      p Want to add your amazing script to the repository? Well then here's your chance! 
-      p Your code must fulfill the following conditions however:   
-      ol 
-        li It must not be malicious in intent. That means no powder.pref-stealers, no analytics scripts, no scripts that download other scripts, no scripts that intend to disable or crash the process/computer of the client. The scripts will be first confirmed by a passing moderator. 
-
-        li It must not be a 'tpt.el'-element, it must use the proper <a href="http://boxmein.x10.mx/tptelements/lua/lua-reference.html#elements">elements API</a> and not modify other elements substantially. Small modifications are fine though, like making acid not flammable.
-
+      p You can add scripts to the server by notifying me on some social network <a href="http://tpt.io/@boxmein">[TPT]</a>, or, well, hosting your own copy of the server. Easy enough.
   
